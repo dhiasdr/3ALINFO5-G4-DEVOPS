@@ -1,25 +1,12 @@
-package tn.esprit.spring.model;
+package tn.esprit.spring.payload;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
-public class Project implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5761444763547039002L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+
+public class ProjectPayload {
 	private String name;
 	private String code;
 	private String description;
@@ -27,14 +14,7 @@ public class Project implements Serializable {
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
-	@ManyToOne
-	private Team team;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private Long idTeam;
 	public String getName() {
 		return name;
 	}
@@ -65,15 +45,11 @@ public class Project implements Serializable {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	public Team getTeam() {
-		return team;
+	public Long getIdTeam() {
+		return idTeam;
 	}
-	public void setTeam(Team team) {
-		this.team = team;
+	public void setIdTeam(Long idTeam) {
+		this.idTeam = idTeam;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.esprit.spring.model.Project;
+import tn.esprit.spring.payload.ProjectPayload;
 import tn.esprit.spring.service.ProjectService;
 
 @Controller
@@ -23,10 +24,10 @@ public class ProjectController {
 	private ProjectService projectService;
 
 	@PostMapping(value = "/addProject")
-	public ResponseEntity addProject(@RequestBody Project project) {
+	public ResponseEntity addProject(@RequestBody ProjectPayload projectPayload) {
 		Project projectPostSave = null;
 		try {
-			projectPostSave = projectService.addProject(project);
+			projectPostSave = projectService.addProject(projectPayload);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ResponseEntity.badRequest().body(ex.getMessage());

@@ -3,9 +3,10 @@ package tn.esprit.spring.service;
 import java.util.List;
 
 import tn.esprit.spring.model.Project;
+import tn.esprit.spring.payload.ProjectPayload;
 
 public interface ProjectService {
-	Project addProject(Project project);
+	Project addProject(ProjectPayload projectPayload);
 	Project updateProject(Project project);
 	void deleteProject(Long id);
 	List<Project> findAllProjects();

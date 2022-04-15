@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.model.Entreprise;
 import tn.esprit.spring.model.Team;
-import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.repository.TeamRepository;
 @Service
 public class TeamServiceImpl implements TeamService{

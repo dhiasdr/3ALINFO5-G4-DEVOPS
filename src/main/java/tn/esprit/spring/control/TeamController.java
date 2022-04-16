@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.esprit.spring.model.Team;
 import tn.esprit.spring.service.EntrepriseService;
+import tn.esprit.spring.service.TeamService;
 @Controller
 public class TeamController {
 	
-
 	@Autowired	
-	private EntrepriseService entrepriseService;
+	private TeamService teamService;
 	
 	@PostMapping(value = "/addTeam")
 	public ResponseEntity addTeam(@RequestBody Team team) {
@@ -40,7 +40,7 @@ public class TeamController {
 	public ResponseEntity updateTeam(@RequestBody Team team) {
 		Team teamPostUpdate = null;
 		try {
-			teamPostUpdate = TeamService.updateTeam(team);
+			teamPostUpdate = teamService.updateTeam(team);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ResponseEntity.badRequest().body(ex.getMessage());
@@ -75,7 +75,7 @@ public class TeamController {
 	public ResponseEntity findTeamById(@PathVariable Long id) {
 		Team team = null;
 		try {
-			team = TeamService.findTeamById(id);
+			team = teamService.findTeamById(id);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ResponseEntity.badRequest().body(ex.getMessage());

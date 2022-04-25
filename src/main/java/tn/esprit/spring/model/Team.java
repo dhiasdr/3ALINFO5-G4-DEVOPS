@@ -25,6 +25,8 @@ public class Team implements Serializable{
 	
 	private String description;
 	
+	@OneToMany(mappedBy = "team")
+	private List<Project> project;
  
 	public String getName() {
 		return name;

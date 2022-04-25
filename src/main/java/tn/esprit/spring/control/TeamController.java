@@ -20,7 +20,7 @@ import tn.esprit.spring.service.EntrepriseService;
 @Controller
 public class TeamController {
 	
-
+/*
 	@Autowired	
 	private EntrepriseService entrepriseService;
 	
@@ -82,5 +82,5 @@ public class TeamController {
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(team);
 	}
-
+*/
 }

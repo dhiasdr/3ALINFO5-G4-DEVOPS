@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.esprit.spring.model.Contrat;
 import tn.esprit.spring.model.Project;
+import tn.esprit.spring.payload.ContratPayload;
 import tn.esprit.spring.service.ContratService;
 import tn.esprit.spring.service.ProjectService;
 @Controller
@@ -24,7 +25,7 @@ public class ContratController {
 	private ContratService contratService;
 
 	@PostMapping(value = "/addContrat")
-	public ResponseEntity addContrat(@RequestBody Contrat contrat) {
+	public ResponseEntity addContrat(@RequestBody ContratPayload contrat) {
 		Contrat contratPostSave = null;
 		try {
 			contratPostSave = contratService.addContrat(contrat);

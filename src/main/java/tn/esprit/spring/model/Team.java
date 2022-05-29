@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -27,7 +28,37 @@ public class Team implements Serializable{
 	
 	@OneToMany(mappedBy = "team")
 	private List<Project> project;
- 
+	
+	/*@OneToMany(mappedBy = "team")
+	private List<Employe> employee;*/
+	
+	@ManyToOne
+	private Departement department;
+	
+	public List<Project> getProject() {
+		return project;
+	}
+
+	public void setProject(List<Project> project) {
+		this.project = project;
+	}
+
+	/*public List<Employe> getEmployee() {
+		return employee;
+	}*/
+
+	/*public void setEmployee(List<Employe> employee) {
+		this.employee = employee;
+	}*/
+
+	public Departement getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Departement department) {
+		this.department = department;
+	}
+
 	public String getName() {
 		return name;
 	}

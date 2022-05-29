@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.esprit.spring.model.Departement;
+import tn.esprit.spring.payload.DepartementPayload;
 import tn.esprit.spring.service.DepartementService;
 
 @Controller
@@ -23,10 +24,10 @@ public class DepartementController {
 	private DepartementService departementService;
 	
 	@PostMapping(value = "/addDepartement")
-	public ResponseEntity addDepartement(@RequestBody Departement departement) {
+	public ResponseEntity addDepartement(@RequestBody DepartementPayload departementPayload) {
 		Departement departementPostSave = null;
 		try {
-			departementPostSave = departementService.addDepartement(departement);
+			departementPostSave = departementService.addDepartement(departementPayload);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ResponseEntity.badRequest().body(ex.getMessage());

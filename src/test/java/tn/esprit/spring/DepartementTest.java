@@ -22,7 +22,7 @@ public class DepartementTest {
 	EntrepriseService entrepriseService;
 
 	@Test
-	void testDeleteDepartement() {
+	void testUpdateDepartement() {
 		Entreprise entreprise = new Entreprise();
 		entreprise.setName("entreprise");
 		entreprise.setRaisonSocial("raisonsocial");
@@ -32,10 +32,14 @@ public class DepartementTest {
 		departementPayload.setName("dep_1");
 		departementPayload.setIdEntreprise(entreprise.getId());
 		departement = departementService.addDepartement(departementPayload);
+		String oldName = departement.getName();
 		Long id = departement.getId();
-		departementService.deleteDepartement(id);
-
-		assertTrue(departementService.findDepartementById(id) == null);
+		Departement newDepartement = new Departement();
+		newDepartement.setId(id);
+		newDepartement.setName("dep_2");
+		departementService.updateDepartement(newDepartement);
+		Departement updatedDepartement = departementService.findDepartementById(id);
+		assertTrue(updatedDepartement != null && updatedDepartement.getName() != oldName );
 
 	}
 

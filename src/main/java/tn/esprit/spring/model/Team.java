@@ -33,7 +33,7 @@ public class Team implements Serializable{
 	private List<Employe> employee;
 	
 	@ManyToOne
-	private Departement department;
+	private Departement departement;
 	
 	public List<Project> getProject() {
 		return project;
@@ -51,12 +51,12 @@ public class Team implements Serializable{
 		this.employee = employee;
 	}
 
-	public Departement getDepartment() {
-		return department;
+	public Departement getDepartement() {
+		return departement;
 	}
 
-	public void setDepartment(Departement department) {
-		this.department = department;
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
 	}
 
 	public String getName() {

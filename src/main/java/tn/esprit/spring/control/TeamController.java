@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.esprit.spring.model.Team;
+import tn.esprit.spring.payload.TeamPayload;
 import tn.esprit.spring.service.EntrepriseService;
 import tn.esprit.spring.service.TeamService;
 @Controller
@@ -25,10 +26,10 @@ public class TeamController {
 	private TeamService teamService;
 	
 	@PostMapping(value = "/addTeam")
-	public ResponseEntity addTeam(@RequestBody Team team) {
+	public ResponseEntity addTeam(@RequestBody TeamPayload teamPayload) {
 		Team teamPostSave = null;
 		try {
-			teamPostSave = teamService.addTeam(team);
+			teamPostSave = teamService.addTeam(teamPayload);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ResponseEntity.badRequest().body(ex.getMessage());

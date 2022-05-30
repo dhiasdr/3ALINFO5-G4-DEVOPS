@@ -29,8 +29,8 @@ public class Team implements Serializable{
 	@OneToMany(mappedBy = "team")
 	private List<Project> project;
 	
-	/*@OneToMany(mappedBy = "team")
-	private List<Employe> employee;*/
+	@OneToMany(mappedBy = "team")
+	private List<Employe> employee;
 	
 	@ManyToOne
 	private Departement department;
@@ -43,13 +43,13 @@ public class Team implements Serializable{
 		this.project = project;
 	}
 
-	/*public List<Employe> getEmployee() {
+	public List<Employe> getEmployee() {
 		return employee;
-	}*/
+	}
 
-	/*public void setEmployee(List<Employe> employee) {
+	public void setEmployee(List<Employe> employee) {
 		this.employee = employee;
-	}*/
+	}
 
 	public Departement getDepartment() {
 		return department;

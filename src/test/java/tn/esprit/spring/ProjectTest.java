@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.spring.model.Project;
 import tn.esprit.spring.model.Team;
 import tn.esprit.spring.payload.ProjectPayload;
-import tn.esprit.spring.payload.TeamPayload;
 import tn.esprit.spring.service.ProjectService;
 import tn.esprit.spring.service.TeamService;
 
@@ -28,10 +27,9 @@ public class ProjectTest {
 	@Test
 	void testAddProject() {
         Team team=new Team();
-        TeamPayload teamPayload = new TeamPayload();
         team.setName("team2");
         team.setDescription("desc");
-        team= teamService.addTeam(teamPayload);
+        team= teamService.addTeam(team);
         
         ProjectPayload projectPayload= new ProjectPayload();
         projectPayload.setCode("code");

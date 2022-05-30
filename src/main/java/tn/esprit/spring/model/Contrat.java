@@ -27,9 +27,9 @@ public class Contrat implements Serializable {
 	 
 	private String typeContrat;
  
-	@JsonIgnore
+	/*@JsonIgnore
 	@OneToOne(mappedBy="contrat")
-	private Employe employe;
+	private Employe employe;*/
 
 	private float salaire;
 
@@ -76,12 +76,12 @@ public class Contrat implements Serializable {
 		this.salaire = salaire;
 	}
 
-	public Employe getEmploye() {
+	/*public Employe getEmploye() {
 		return employe;
 	}
 
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
-	}
+	}*/
  
 }

@@ -28,7 +28,7 @@ public class Departement implements Serializable {
 	private Entreprise entreprise;
 	
 	@OneToMany(mappedBy = "departement")
-	private Team team;
+	private List<Team> team;
 
 	public Departement() {
 		super();
@@ -54,17 +54,19 @@ public class Departement implements Serializable {
 		this.name = name;
 	}
 
-	public Team getTeam() {
-		return team;
-	}
-	public void setTeam(Team team) {
-		this.team = team;
-	}
 	public Entreprise getEntreprise() {
 		return entreprise;
 	}
 	public void setEntreprise(Entreprise entreprise) {
 		this.entreprise = entreprise;
+	}
+
+	public List<Team> getTeam() {
+		return team;
+	}
+
+	public void setTeam(List<Team> team) {
+		this.team = team;
 	}
 	 
 }

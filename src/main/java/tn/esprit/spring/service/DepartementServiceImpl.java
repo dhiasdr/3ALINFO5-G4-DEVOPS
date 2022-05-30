@@ -15,16 +15,16 @@ import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.ProjectRepository;
 
 @Service
-public class DepartementServiceImpl implements DepartementService{
+public class DepartementServiceImpl implements DepartementService {
 	private static final Logger logger = LogManager.getLogger(DepartementServiceImpl.class);
 	@Autowired
 	private DepartementRepository departementRepository;
 	@Autowired
 	private EntrepriseService entrepriseService;
-	
+
 	@Override
 	public Departement addDepartement(DepartementPayload departementPayload) {
-		Departement departement= new Departement();
+		Departement departement = new Departement();
 		logger.info("start mapping process");
 		departement.setName(departementPayload.getName());
 		departement.setEntreprise(entrepriseService.findEntrepriseById(departementPayload.getIdEntreprise()));
@@ -32,11 +32,6 @@ public class DepartementServiceImpl implements DepartementService{
 		logger.info("save departement");
 		return departementRepository.save(departement);
 	}
-
-//	@Override
-//	public Departement addDepartement(Departement departement) {
-//		return departementRepository.save(departement);
-//	}
 
 	@Override
 	public Departement updateDepartement(Departement departement) {
@@ -58,8 +53,8 @@ public class DepartementServiceImpl implements DepartementService{
 
 	@Override
 	public Departement findDepartementById(Long id) {
-		logger.info("find department with id: "+id);
-		return departementRepository.findById(id).get();
+		logger.info("find department with id: " + id);
+		return departementRepository.findById(id).orElse(null);
 	}
 
 }

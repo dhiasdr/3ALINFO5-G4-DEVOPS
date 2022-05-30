@@ -16,15 +16,6 @@ public class TeamServiceImpl implements TeamService{
 	@Autowired
 	private TeamRepository teamRepository;
 	
-	@Autowired
-	private DepartementService departementService;
-	
-	@Autowired
-	private EmployeService employeService;
-	
-	@Autowired
-	private ProjectService projectService;
-	
 	@Override
 	public Team addTeam(TeamPayload teamPayload) {
 		Team team = new Team();

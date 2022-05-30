@@ -15,28 +15,28 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Contrat implements Serializable {
-	
+
 	private static final long serialVersionUID = 6191889143079517027L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long reference;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dateDebut;
-	 
+
 	private String typeContrat;
- 
-	/*@JsonIgnore
+
+	@JsonIgnore
 	@OneToOne(mappedBy="contrat")
-	private Employe employe;*/
+	private Employe employe;
 
 	private float salaire;
 
 	public Contrat() {
 		super();
 	}
-	
+
 	public Contrat(Date dateDebut, String typeContrat, float salaire) {
 		this.dateDebut = dateDebut;
 		this.typeContrat = typeContrat;
@@ -51,7 +51,7 @@ public class Contrat implements Serializable {
 	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
- 
+
 	public Long getReference() {
 		return reference;
 	}
@@ -76,12 +76,12 @@ public class Contrat implements Serializable {
 		this.salaire = salaire;
 	}
 
-	/*public Employe getEmploye() {
+	public Employe getEmploye() {
 		return employe;
 	}
 
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
-	}*/
- 
+	}
+
 }

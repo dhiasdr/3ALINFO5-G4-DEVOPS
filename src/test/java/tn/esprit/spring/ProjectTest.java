@@ -21,17 +21,18 @@ import tn.esprit.spring.service.TeamService;
 
 @SpringBootTest
 public class ProjectTest {
-	@Autowired
-	ProjectService projectService;
-	@Autowired
-	TeamService teamService;
-	
-	@Test
-	void testAddProject() {
-        TeamPayload teamPayload=new TeamPayload();
-        teamPayload.setName("team2");
-        teamPayload.setDescription("desc");
-        Team team= teamService.addTeam(teamPayload);
+    @Autowired
+    TeamService teamService;
+    @Autowired
+    ProjectService projectService;
+    @Test
+    void testAddProject() {
+        Team team=new Team();
+        TeamPayload teamPayload = new TeamPayload();
+        team.setName("team2");
+        team.setDescription("desc");
+        team= teamService.addTeam(teamPayload);
+
         ProjectPayload projectPayload= new ProjectPayload();
         projectPayload.setCode("code");
         projectPayload.setDescription("desc");
@@ -39,8 +40,9 @@ public class ProjectTest {
         projectPayload.setStartDate(new Date());
         projectPayload.setEndDate(new Date());
         projectPayload.setIdTeam(team.getId());
-        Project project = projectService.addProject(projectPayload);
-		assertTrue(project!=null);
+        Project project= projectService.addProject(projectPayload);
+        assertTrue(project!=null);
 
-	}
+    }
+
 }

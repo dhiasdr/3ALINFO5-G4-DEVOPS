@@ -21,20 +21,20 @@ public class Team implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private String description;
-	
+
 	@OneToMany(mappedBy = "team")
 	private List<Project> project;
-	
+
 	@OneToMany(mappedBy = "team")
 	private List<Employe> employee;
-	
+
 	@ManyToOne
 	private Departement departement;
-	
+
 	public List<Project> getProject() {
 		return project;
 	}
@@ -51,11 +51,11 @@ public class Team implements Serializable{
 		this.employee = employee;
 	}
 
-	public Departement getDepartement() {
+	public Departement getDepartment() {
 		return departement;
 	}
 
-	public void setDepartement(Departement departement) {
+	public void setDepartment(Departement departement) {
 		this.departement = departement;
 	}
 
@@ -82,4 +82,5 @@ public class Team implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 }

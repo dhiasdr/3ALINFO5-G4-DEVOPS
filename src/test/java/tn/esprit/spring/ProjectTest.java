@@ -15,22 +15,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.spring.model.Project;
 import tn.esprit.spring.model.Team;
 import tn.esprit.spring.payload.ProjectPayload;
+import tn.esprit.spring.payload.TeamPayload;
 import tn.esprit.spring.service.ProjectService;
 import tn.esprit.spring.service.TeamService;
 
 @SpringBootTest
 public class ProjectTest {
 	@Autowired
-	TeamService teamService;
-	@Autowired
 	ProjectService projectService;
+	@Autowired
+	TeamService teamService;
+	
 	@Test
 	void testAddProject() {
-        Team team=new Team();
-        team.setName("team2");
-        team.setDescription("desc");
-        team= teamService.addTeam(team);
-        
+        TeamPayload teamPayload=new TeamPayload();
+        teamPayload.setName("team2");
+        teamPayload.setDescription("desc");
+        Team team= teamService.addTeam(teamPayload);
         ProjectPayload projectPayload= new ProjectPayload();
         projectPayload.setCode("code");
         projectPayload.setDescription("desc");
@@ -38,9 +39,8 @@ public class ProjectTest {
         projectPayload.setStartDate(new Date());
         projectPayload.setEndDate(new Date());
         projectPayload.setIdTeam(team.getId());
-        Project project= projectService.addProject(projectPayload);
+        Project project = projectService.addProject(projectPayload);
 		assertTrue(project!=null);
 
 	}
-
 }

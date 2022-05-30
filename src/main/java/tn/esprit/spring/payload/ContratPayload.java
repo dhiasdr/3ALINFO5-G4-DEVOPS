@@ -9,6 +9,7 @@ public class ContratPayload {
 	private Date dateDebut;
 	private String typeContrat;
 	private float salaire;
+	private int idEmploye;
 	public Long getReference() {
 		return reference;
 	}
@@ -33,5 +34,12 @@ public class ContratPayload {
 	public void setSalaire(float salaire) {
 		this.salaire = salaire;
 	}
+	public int getIdEmploye() {
+		return idEmploye;
+	}
+	public void setIdEmploye(int idEmploye) {
+		this.idEmploye = idEmploye;
+	}
+	
 	
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.esprit.spring.model.Employe;
+import tn.esprit.spring.payload.EmployeePayload;
 import tn.esprit.spring.service.EmployeService;
 
 
@@ -25,10 +26,10 @@ public class EmployeController  {
 	private EmployeService employeService;
 	
 	@PostMapping(value = "/addEmploye")
-	public ResponseEntity addEmploye(@RequestBody Employe employe) {
+	public ResponseEntity addEmploye(@RequestBody EmployeePayload employePayload) {
 		Employe employePostSave = null;
 		try {
-			employePostSave = (Employe) employeService.addEmploye(employe);
+			employePostSave = (Employe) employeService.addEmploye(employePayload);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ResponseEntity.badRequest().body(ex.getMessage());
@@ -83,6 +84,11 @@ public class EmployeController  {
 		return ResponseEntity.status(HttpStatus.OK).body(employe);
 	}
 
+	@PutMapping(value = "/affecterEmployeATeam/{idemp}/{idteam}") 
+	public void affecterEmployeATeam(@PathVariable("idemp")int employeId, @PathVariable("idteam")int teamId) {
+		employeService.affecterEmployeATeam(employeId, teamId);
+		
+	}
 	
 	
 

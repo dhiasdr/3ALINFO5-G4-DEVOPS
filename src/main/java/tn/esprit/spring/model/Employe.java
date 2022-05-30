@@ -11,62 +11,62 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 
 @Entity
 public class Employe implements Serializable {
-	
+
 	private static final long serialVersionUID = -1396669830860400871L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String prenom;
-	
+
 	private String nom;
-	
-	//@Column(unique=true)
+
+	// @Column(unique=true)
 	private String email;
 
 	private boolean isActif;
-	
+
 	@Enumerated(EnumType.STRING)
-	//@NotNull
+	// @NotNull
 	private Role role;
-	
-	//@JsonBackReference  
-	//@JsonIgnore
-	//@ManyToMany(mappedBy="employes",fetch=FetchType.EAGER )
-	//@NotNull
-	//private List<Departement> departements;
-	
-	//@JsonIgnore
-	//@JsonBackReference
-	
-	/*@OneToOne(mappedBy="employe")
-	private Contrat contrat;*/
-	
+
 	@JsonIgnore
-	//@JsonBackReference
-	//@OneToMany(mappedBy="employe")
-	//private List<Project> project;
-	
-	
-	/*public Employe(String nom, String prenom, String email, boolean isActif, Role role) {
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.isActif = isActif;
-		this.role = role;
-	}*/
-	
+	@JsonBackReference
+	@ManyToOne
+	private Team team;
+
+
+	@JsonIgnore
+	@JsonBackReference
+	@OneToOne
+	private Contrat contrat;
+
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
+	public Contrat getContrat() {
+		return contrat;
+	}
+
+	public void setContrat(Contrat contrat) {
+		this.contrat = contrat;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -115,30 +115,4 @@ public class Employe implements Serializable {
 		this.role = role;
 	}
 
-	/*public List<Departement> getDepartements() {
-		return departements;
-	}
-
-	public void setDepartements(List<Departement> departement) {
-		this.departements = departement;
-	}*/
-
-	/*public Contrat getContrat() {
-		return contrat;
-	}
-
-	public void setContrat(Contrat contrat) {
-		this.contrat = contrat;
-	}*/
-
-	/*public List<Project> getTimesheets() {
-		return project;
-	}
-
-	public void setProject(List<Project> project) {
-		this.project = project;
-	}*/
-	
-	
-	
 }

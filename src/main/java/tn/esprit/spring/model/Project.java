@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Project implements Serializable {
@@ -27,6 +28,7 @@ public class Project implements Serializable {
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
+	@JsonIgnore
 	@ManyToOne
 	private Team team;
 	public Long getId() {
